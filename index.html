@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <link rel="stylesheet" type="text/css" href="datepicker.min.css">
+  <style>
+    .time-slot {
+      display: inline-block;
+      width: 100px;
+      margin: 5px;
+    }
+  </style>
+</head>
+<body>
+  <h1>Booking Form</h1>
+  <div>
+    <label for="centre">Centre:</label>
+    <select id="centre">
+      <option value="centre1">Centre 1</option>
+      <option value="centre2">Centre 2</option>
+      <option value="centre3">Centre 3</option>
+    </select>
+  </div>
+  <div>
+    <label for="fullName">Full Name:</label>
+    <input type="text" id="fullName" required>
+  </div>
+  <div>
+    <label for="number">Number:</label>
+    <input type="text" id="number" required>
+  </div>
+  <div>
+    <label for="email">Email:</label>
+    <input type="email" id="email" required>
+  </div>
+  <div>
+    <label for="message">Message:</label>
+    <textarea id="message" rows="4"></textarea>
+  </div>
+  <div>
+    <label for="datepicker">Choose Date:</label>
+    <input type="text" id="datepicker" readonly>
+  </div>
+  <div id="time-slots"></div>
+  <button type="submit">Submit</button>
+
+  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+  <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+  <script src="datepicker.min.js"></script>
+  <script src="calendar.js"></script>
+  <script>
+    $(document).ready(function() {
+      $("#datepicker").datepicker({
+        dateFormat: "yy-mm-dd",
+        onSelect: function(dateText, inst) {
+          // Clear previous time slots
+          $("#time-slots").empty();
+          // Generate time slots for the selected date
+          generateTimeSlots(dateText);
+        }
+      });
+    });
+
+    function generateTimeSlots(date) {
+      // Replace this code with your own logic to generate time slots based on the selected date
+      var timeSlots = ["10:00 AM", "11:00 AM", "12:00 PM", "1:00 PM", "2:00 PM", "3:00 PM"];
+      var timeSlotsHtml = "";
+      for (var i = 0; i < timeSlots.length; i++) {
+        timeSlotsHtml += '<label class="time-slot"><input type="radio" name="time" value="' + timeSlots[i] + '"> ' + timeSlots[i] + '</label>';
+      }
+      $("#time-slots").html(timeSlotsHtml);
+    }
+  </script>
+</body>
+</html>
+
+
+
+
+

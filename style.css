@@ -1,0 +1,60 @@
+body {
+    font-family: Arial, sans-serif;
+    margin: 20px;
+  }
+  
+  h1 {
+    text-align: center;
+  }
+  
+  #calendar {
+    display: inline-block;
+    margin-bottom: 20px;
+  }
+  
+  #calendar table {
+    width: 100%;
+  }
+  
+  #calendar th,
+  #calendar td {
+    text-align: center;
+    padding: 5px;
+  }
+  
+  #calendar .prev-month,
+  #calendar .next-month {
+    color: #aaa;
+  }
+  
+  #calendar .current-month {
+    font-weight: bold;
+  }
+  
+  #time-slots {
+    display: inline-block;
+  }
+  
+  #time-slots select {
+    margin-top: 10px;
+  }
+  
+  #booking-form {
+    margin-top: 20px;
+  }
+  
+  #booking-form label {
+    display: block;
+    margin-top: 10px;
+  }
+  
+  #booking-form input,
+  #booking-form textarea {
+    width: 100%;
+    padding: 5px;
+  }
+  
+  #booking-form input[type="submit"] {
+    margin-top: 20px;
+  }
+  
