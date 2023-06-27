@@ -38,6 +38,8 @@ document.addEventListener("DOMContentLoaded", function() {
         e.target.classList.add("selected");
       }
     });
+
+
   });
   
   
