@@ -22,15 +22,15 @@
   </div>
   <div>
     <label for="fullName">Full Name:</label>
-    <input type="text" id="fullName" required>
+    <input type="text" name="fullNameField" id="fullName" required>
   </div>
   <div>
     <label for="number">Number:</label>
-    <input type="text" id="number" required>
+    <input type="text" name="numberField" id="number" required>
   </div>
   <div>
     <label for="email">Email:</label>
-    <input type="email" id="email" required>
+    <input type="email" name="emailField" id="email" required>
   </div>
   <div>
     <label for="message">Message:</label>
@@ -41,7 +41,7 @@
     <input type="text" id="datepicker" readonly>
   </div>
   <div id="time-slots"></div>
-  <button type="submit">Submit</button>
+  <button type="submit" id="submitButton">Submit</button>
 
   <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
   <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
@@ -59,6 +59,50 @@
         }
       });
     });
+
+  // Get the submit button element
+  const submitButton = document.getElementById("submitButton");
+
+// Add click event listener to the submit button
+submitButton.addEventListener("click", function(event) {
+  event.preventDefault(); // Prevent form submission
+
+   // Retrieve the selected centre
+   const centre = document.getElementById("centre").value;
+
+  // Retrieve the values of the name field, email field, and number field
+  const name = document.getElementById("fullName").value;
+  const email = document.getElementById("email").value;
+  const number = document.getElementById("number").value;
+
+   // Retrieve the selected date
+   const date = document.getElementById("datepicker").value;
+
+// Retrieve the selected time slot
+const timeSlot = document.querySelector("#time-slots input[type='radio']:checked");
+const timeSlotValue = timeSlot ? timeSlot.value : '';
+
+// Retrieve the message value
+const message = document.getElementById("message").value;
+
+// Construct the message to display
+const displayMessage = "Centre: " + centre + "\nName: " + name + "\nEmail: " + email + "\nNumber: " + number +
+  "\nDate: " + date + "\nTime Slot: " + timeSlotValue + "\nMessage: " + message;
+
+// Display the message on the screen
+  alert(displayMessage);
+ // Reset the form fields
+ document.getElementById("centre").value = '';
+ document.getElementById("fullName").value = '';
+    document.getElementById("email").value = '';
+    document.getElementById("number").value = '';
+    document.getElementById("datepicker").value = '';
+    if (timeSlot) {
+      timeSlot.checked = false;
+    }
+    document.getElementById("message").value = '';
+});
+
 
     function generateTimeSlots(date) {
       // Replace this code with your own logic to generate time slots based on the selected date
